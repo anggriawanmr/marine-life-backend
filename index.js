@@ -3,8 +3,10 @@ const cookieSession = require('cookie-session');
 const express = require('express');
 const cors = require('cors');
 const passport = require('passport');
-const passportSetup = require('./passport.js');
 const app = express();
+
+const passportSetup = require('./passport.js');
+const authRoute = require('./routes/auth.js');
 
 app.use(
   cookieSession({
@@ -24,6 +26,8 @@ app.use(
     credentials: true,
   })
 );
+
+app.use('/auth', authRoute);
 
 const port = process.env.PORT || 5000;
 

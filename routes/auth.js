@@ -29,3 +29,10 @@ router.get(
 );
 
 router.get('/google', passport.authenticate('google', ['profile', 'email']));
+
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.reedirect(process.env.CLIENT_URL);
+});
+
+module.exports = router;
