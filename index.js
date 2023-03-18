@@ -1,12 +1,15 @@
-require('dotenv').config();
-const cookieSession = require('cookie-session');
-const express = require('express');
-const cors = require('cors');
-const passport = require('passport');
-const app = express();
+import * as dotenv from 'dotenv';
+import express from 'express';
+import cors from 'cors';
+import passport from 'passport';
+import cookieSession from 'cookie-session';
 
 const passportSetup = require('./passport.js');
 const authRoute = require('./routes/auth.js');
+
+dotenv.config();
+const app = express();
+app.use(cors());
 
 app.use(
   cookieSession({
